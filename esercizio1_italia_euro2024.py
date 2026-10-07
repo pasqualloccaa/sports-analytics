@@ -62,3 +62,14 @@ plt.show()
 # 2. Quanti tiri sono arrivati da fuori area (x < 102)? Che xG medio avevano?
 # 3. Ripeti tutto per la Spagna (vincitrice) e confronta xG per tiro: cosa noti?
 # 4. Scrivi 3 righe di conclusioni e pubblica grafico + commento su LinkedIn.
+
+# %% Sfida 1 – chi ha tirato di più
+tiratori = tiri.groupby("player").agg(
+    tiri=("id", "count"),
+    xG=("shot_statsbomb_xg", "sum"),
+    gol=("gol", "sum"),
+).round(2).sort_values("xG", ascending=False)
+
+print(tiratori)
+
+# %%
